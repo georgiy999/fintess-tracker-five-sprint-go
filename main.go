@@ -36,7 +36,7 @@ func (t Training) meanSpeed() float64 {
 	// вставьте ваш код ниже
 	dur := t.Duration.Hours()
 	if dur == 0 {
-		panic("Нельзя делить на ноль")
+		return 0
 	}
 	return t.distance() / dur
 }
@@ -139,7 +139,7 @@ func (w Walking) Calories() float64 {
 	// вставьте ваш код ниже
 	dur := w.Training.Duration.Hours()
 	if dur == 0 {
-		panic("Нельзя делить на ноль")
+		return 0
 	}
 	return ((CaloriesWeightMultiplier*w.Training.Weight + (math.Pow(w.Training.meanSpeed()*KmHInMsec, 2)/w.Height/CmInM)*CaloriesSpeedHeightMultiplier*w.Training.Weight) * dur * MinInHours)
 }
@@ -174,7 +174,7 @@ func (s Swimming) meanSpeed() float64 {
 	// вставьте ваш код ниже
 	dur := s.Training.Duration.Hours()
 	if dur == 0 {
-		panic("Нельзя делить на ноль")
+		return 0
 	}
 	return float64(s.LengthPool) * float64(s.CountPool) / MInKm / dur
 }
